@@ -1,5 +1,6 @@
 import { Flag, Tent, Trophy, Flame } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import routeMap from "@/assets/route-map.jpg";
 
 const Timeline = () => {
   const days = [
@@ -32,7 +33,7 @@ const Timeline = () => {
   ];
 
   return (
-    <section className="py-24 bg-secondary/5 relative">
+    <section className="py-24 bg-secondary/20 relative">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-6 py-2 mb-6">
@@ -49,6 +50,23 @@ const Timeline = () => {
           <p className="text-lg text-muted-foreground">
             Vijf dagen vol avontuur, vriendschap en gehaktballen
           </p>
+        </div>
+
+        {/* Route Map */}
+        <div className="max-w-5xl mx-auto mb-12">
+          <Card className="overflow-hidden border-2 border-primary/20">
+            <img 
+              src={routeMap} 
+              alt="Rally route door Zwitserland en Oostenrijk" 
+              className="w-full h-auto"
+            />
+            <div className="p-6 bg-card/80 backdrop-blur-sm">
+              <h3 className="font-display text-2xl text-foreground mb-2">De Route</h3>
+              <p className="text-muted-foreground">
+                Door de prachtige Alpen van Zwitserland en Oostenrijk – bergpassen, kampeerplekken en onvergetelijke uitzichten.
+              </p>
+            </div>
+          </Card>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-8">

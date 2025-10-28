@@ -1,8 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Flame } from "lucide-react";
-import heroImage from "@/assets/hero-rally.jpg";
+import heroImage from "@/assets/hero-volvo-rally.jpg";
 
-const Hero = () => {
+interface HeroProps {
+  onRegisterClick: () => void;
+}
+
+const Hero = ({ onRegisterClick }: HeroProps) => {
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    aboutSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -41,7 +50,8 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
-              size="lg" 
+              size="lg"
+              onClick={onRegisterClick}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-8 py-6 shadow-[0_0_40px_hsl(25_95%_53%_/_0.4)] hover:shadow-[0_0_60px_hsl(25_95%_53%_/_0.6)] transition-all"
             >
               <Flame className="mr-2 h-5 w-5" />
@@ -52,6 +62,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
+              onClick={scrollToAbout}
               className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 font-semibold text-lg px-8 py-6"
             >
               Meer over het avontuur

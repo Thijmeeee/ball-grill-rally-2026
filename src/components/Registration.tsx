@@ -1,10 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Flame, Clock, Bell } from "lucide-react";
+import { Flame, Bell } from "lucide-react";
+import Countdown from "./Countdown";
 
-const Registration = () => {
+interface RegistrationProps {
+  onRegisterClick: () => void;
+}
+
+const Registration = ({ onRegisterClick }: RegistrationProps) => {
   return (
-    <section className="py-24 bg-gradient-to-b from-secondary/5 to-primary/5 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-secondary/20 to-secondary/30 relative overflow-hidden">
       {/* Decorative flames */}
       <div className="absolute top-10 left-10 text-primary/10 animate-float">
         <Flame className="w-32 h-32" />
@@ -31,23 +36,12 @@ const Registration = () => {
                   <span className="text-gradient-fire">HET AVONTUUR?</span>
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Inschrijvingen openen half november 2025
+                  Inschrijvingen openen zaterdag 22 november om 20:00
                 </p>
               </div>
 
-              {/* Countdown Timer Placeholder */}
-              <div className="flex justify-center gap-4 py-8">
-                {['Dagen', 'Uren', 'Minuten'].map((unit, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center mb-2">
-                      <Clock className="w-8 h-8 text-primary" />
-                    </div>
-                    <span className="text-sm text-muted-foreground font-medium">
-                      {unit}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              {/* Countdown Timer */}
+              <Countdown />
 
               <div className="space-y-4 text-muted-foreground">
                 <p className="text-lg">
@@ -59,11 +53,12 @@ const Registration = () => {
               </div>
 
               <Button 
-                size="lg" 
+                size="lg"
+                onClick={onRegisterClick}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-12 py-6 shadow-[0_0_40px_hsl(25_95%_53%_/_0.4)] hover:shadow-[0_0_60px_hsl(25_95%_53%_/_0.6)] transition-all"
               >
                 <Flame className="mr-2 h-5 w-5" />
-                Notificatie ontvangen
+                Schrijf je nu in
               </Button>
 
               <p className="text-sm text-muted-foreground">
