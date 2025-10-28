@@ -7,13 +7,13 @@ interface HeroProps {
 }
 
 const Hero = ({ onRegisterClick }: HeroProps) => {
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    aboutSection?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    section?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img 
@@ -24,18 +24,40 @@ const Hero = ({ onRegisterClick }: HeroProps) => {
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/80 via-secondary/60 to-secondary/90" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-20 text-center">
+      {/* Navbar / Menu */}
+      <nav className="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-center space-x-8 backdrop-blur-md bg-white/20 rounded-b-lg shadow-md">
+        <button
+          onClick={() => scrollToSection("about")}
+          className="text-white font-semibold hover:text-primary transition-colors"
+        >
+          Over de Rally
+        </button>
+        <button
+          onClick={() => scrollToSection("timeline")}
+          className="text-white font-semibold hover:text-primary transition-colors"
+        >
+          De Route
+        </button>
+        <button
+          onClick={() => scrollToSection("register")}
+          className="text-white font-semibold hover:text-primary transition-colors"
+        >
+          Inschrijven
+        </button>
+      </nav>
+
+      {/* Hero Content */}
+      <div className="relative z-10 container mx-auto px-4 py-20 text-center flex flex-col items-center justify-center flex-grow">
         <div className="animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full px-6 py-2 mb-8">
             <Flame className="w-4 h-4 text-primary animate-pulse" />
             <span className="text-primary-foreground font-semibold text-sm tracking-wide uppercase">
-              Juni/Juli 2026 • Alblasserdam
+              2 Juli 2026 t/m 8 Juli 2026 • Alblasserdam
             </span>
           </div>
 
           <h1 className="font-display text-6xl md:text-8xl lg:text-9xl text-white mb-6 leading-none tracking-tight">
-            BALL & GRILL
+            VISPLAAT BALL & GRILL
             <br />
             <span className="text-gradient-fire glow-fire">RALLY 2026</span>
           </h1>
@@ -45,13 +67,13 @@ const Hero = ({ onRegisterClick }: HeroProps) => {
           </p>
 
           <p className="text-lg md:text-xl text-white/70 mb-12 max-w-2xl mx-auto">
-            Waar avontuur, humor en gehaktballen samenkomen op vier wielen
+            Waar avontuur, humor en gehaktballen samenkomen
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg"
-              onClick={onRegisterClick}
+              onClick={() => scrollToSection("register")}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-8 py-6 shadow-[0_0_40px_hsl(25_95%_53%_/_0.4)] hover:shadow-[0_0_60px_hsl(25_95%_53%_/_0.6)] transition-all"
             >
               <Flame className="mr-2 h-5 w-5" />
@@ -62,7 +84,7 @@ const Hero = ({ onRegisterClick }: HeroProps) => {
             <Button 
               size="lg" 
               variant="outline"
-              onClick={scrollToAbout}
+              onClick={() => scrollToSection("about")}
               className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 font-semibold text-lg px-8 py-6"
             >
               Meer over het avontuur

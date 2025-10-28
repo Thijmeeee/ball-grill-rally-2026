@@ -11,9 +11,7 @@ const Footer = () => {
           </div>
 
           <p className="text-secondary-foreground/80 max-w-md">
-            Waar avontuur, humor en gehaktballen samenkomen.
-            <br />
-            Een productie voor echte avonturiers.
+            Waar avontuur, humor en gehaktballen samenkomen. 
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm text-secondary-foreground/60">

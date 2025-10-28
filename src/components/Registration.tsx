@@ -9,7 +9,7 @@ interface RegistrationProps {
 
 const Registration = ({ onRegisterClick }: RegistrationProps) => {
   return (
-    <section className="py-24 bg-gradient-to-b from-secondary/20 to-secondary/30 relative overflow-hidden">
+    <section id="register" className="py-24 bg-gradient-to-b from-secondary/20 to-secondary/30 relative overflow-hidden">
       {/* Decorative flames */}
       <div className="absolute top-10 left-10 text-primary/10 animate-float">
         <Flame className="w-32 h-32" />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Flame, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import Confetti from "react-confetti";
 
 interface RegistrationFormProps {
   onClose: () => void;
@@ -20,16 +21,31 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
     car: "",
     recipe: ""
   });
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+
+  // Update window size
+  useEffect(() => {
+    const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    handleResize(); // initial
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     toast({
       title: "Inschrijving ontvangen! 🔥",
       description: "We nemen binnenkort contact met je op voor de volgende stappen.",
     });
-    
-    onClose();
+
+    setShowConfetti(true);
+
+    setTimeout(() => {
+      setShowConfetti(false);
+      onClose();
+    }, 3000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -41,6 +57,9 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-secondary/80 backdrop-blur-sm animate-fade-in">
+      {/* Confetti */}
+      {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} numberOfPieces={200} recycle={false} />}
+
       <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-card p-8 relative animate-scale-in">
         <button
           onClick={onClose}

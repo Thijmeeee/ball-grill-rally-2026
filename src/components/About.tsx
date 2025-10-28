@@ -5,18 +5,13 @@ const About = () => {
   const details = [
     {
       icon: MapPin,
-      label: "Startlocatie",
+      label: "Start",
       value: "Alblasserdam"
     },
     {
       icon: Calendar,
       label: "Periode",
-      value: "Juni/Juli 2026"
-    },
-    {
-      icon: Calendar,
-      label: "Duur",
-      value: "Donderdag t/m woensdag"
+      value: "Juli 2026 t/m 8 Juli 2026"
     },
     {
       icon: Users,
@@ -33,31 +28,22 @@ const About = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-6 py-2 mb-6">
-            <Flame className="w-4 h-4 text-primary" />
-            <span className="text-primary font-semibold text-sm tracking-wide uppercase">
-              Over de Rally
-            </span>
-          </div>
-
           <h2 className="font-display text-5xl md:text-6xl text-foreground mb-6">
             HET AVONTUUR
           </h2>
 
           <div className="space-y-4 text-lg text-muted-foreground">
             <p className="leading-relaxed">
-              Welkom bij de <span className="text-primary font-semibold">Ball & Grill Rally</span>: 
-              waar avontuur, humor en gehaktballen samenkomen op vier wielen. 
-              Dit is geen gewone roadtrip – dit is een vijfdaags epos vol 
-              onverwachte wendingen, kampvuren onder de sterren, en de geur 
-              van gegrilde perfectie.
+              Welkom bij de <span className="text-primary font-semibold">Visplaat Ball & Grill Rally</span>: 
+              waar avontuur, humor en gehaktballen samenkomen.
+              Dit is geen gewone roadtrip – dit is een vijfdaags avontuur vol 
+              onverwachte wendingen en de geur van gegrilde perfectie.
             </p>
 
             <p className="leading-relaxed">
-              Trek je rallyschoenen aan, laad je BBQ in, en bereid je voor op 
-              een reis die je nooit zult vergeten. Van pittoreske campings tot 
-              uitdagende opdrachten – dit is rally meets festival meets 
-              culinair avontuur.
+              Laad je BBQ in en bereid je voor op 
+              een reis die je nooit zult vergeten. Van avontuurlijke campings tot 
+              uitdagende opdrachten.
             </p>
 
             <p className="text-xl font-semibold text-foreground italic mt-8">
@@ -67,7 +53,7 @@ const About = () => {
         </div>
 
         {/* Details Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto justify-center">
           {details.map((detail, index) => (
             <Card 
               key={index}
