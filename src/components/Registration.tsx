@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Flame, Bell } from "lucide-react";
@@ -8,6 +9,14 @@ interface RegistrationProps {
 }
 
 const Registration = ({ onRegisterClick }: RegistrationProps) => {
+  // Consider the same default target as the countdown component
+  const defaultTarget = new Date("2025-11-22T20:00:00");
+  const [isOpen, setIsOpen] = useState<boolean>(() => {
+    return new Date().getTime() >= defaultTarget.getTime();
+  });
+
+  const handleCountdownFinish = () => setIsOpen(true);
+
   return (
     <section id="register" className="py-24 bg-gradient-to-b from-secondary/20 to-secondary/30 relative overflow-hidden">
       {/* Decorative flames */}
@@ -41,7 +50,7 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
               </div>
 
               {/* Countdown Timer */}
-              <Countdown />
+              <Countdown onFinish={handleCountdownFinish} />
 
               <div className="space-y-4 text-muted-foreground">
                 <p className="text-lg">
@@ -52,18 +61,15 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
                 </p>
               </div>
 
-              <Button 
+              <Button
                 size="lg"
                 onClick={onRegisterClick}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-12 py-6 shadow-[0_0_40px_hsl(25_95%_53%_/_0.4)] hover:shadow-[0_0_60px_hsl(25_95%_53%_/_0.6)] transition-all"
+                disabled={!isOpen}
+                className={`bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-12 py-6 shadow-[0_0_40px_hsl(25_95%_53%_/_0.4)] hover:shadow-[0_0_60px_hsl(25_95%_53%_/_0.6)] transition-all ${!isOpen ? 'opacity-50 cursor-not-allowed hover:shadow-none' : ''}`}
               >
                 <Flame className="mr-2 h-5 w-5" />
                 Schrijf je nu in
               </Button>
-
-              <p className="text-sm text-muted-foreground">
-                Ontvang een melding zodra de inschrijving opent
-              </p>
             </div>
           </Card>
         </div>

@@ -7,11 +7,17 @@ interface TimeLeft {
   seconds: number;
 }
 
-const Countdown = () => {
-  const targetDate = new Date("2025-11-22T20:00:00");
+interface CountdownProps {
+  onFinish?: () => void;
+  targetDate?: string | Date;
+}
+
+const Countdown = ({ onFinish, targetDate }: CountdownProps) => {
+  const defaultTarget = new Date("2025-11-22T20:00:00");
+  const resolvedTarget = targetDate ? new Date(targetDate) : defaultTarget;
   
   const calculateTimeLeft = (): TimeLeft => {
-    const difference = targetDate.getTime() - new Date().getTime();
+    const difference = resolvedTarget.getTime() - new Date().getTime();
     
     if (difference > 0) {
       return {
@@ -26,14 +32,31 @@ const Countdown = () => {
   };
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+  const [finished, setFinished] = useState<boolean>(() => {
+    return resolvedTarget.getTime() - new Date().getTime() <= 0;
+  });
 
   useEffect(() => {
+    // If already finished on mount, call onFinish immediately
+    if (finished && onFinish) {
+      onFinish();
+      return;
+    }
+
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
+      const next = calculateTimeLeft();
+      setTimeLeft(next);
+
+      const remaining = resolvedTarget.getTime() - new Date().getTime();
+      if (remaining <= 0) {
+        setFinished(true);
+        if (onFinish) onFinish();
+        clearInterval(timer);
+      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [resolvedTarget, onFinish, finished]);
 
   const timeUnits = [
     { value: timeLeft.days, label: "Dagen" },
