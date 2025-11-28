@@ -30,7 +30,7 @@ const Features = () => {
     },
     {
       icon: PartyPopper,
-      title: "Eindfeest Visplaat",
+      title: "Eindfeest",
       description: "Afsluiten met stijl en je mede-avonturiers"
     }
   ];

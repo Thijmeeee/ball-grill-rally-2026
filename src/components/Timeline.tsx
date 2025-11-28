@@ -17,7 +17,7 @@ const Timeline = () => {
     {
       day: "Woensdag",
       title: "De Finale",
-      description: "Feestelijke afsluiting op de Visplaat met alle avonturiers",
+      description: "Feestelijke afsluiting met alle avonturiers",
       icon: Trophy,
     }
   ];

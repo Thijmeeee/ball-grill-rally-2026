@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Flame } from "lucide-react";
+import { ArrowRight, Flame, Menu, X } from "lucide-react";
 import heroImage from "@/assets/hero-volvo-rally.jpg";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 interface HeroProps {
   onRegisterClick: () => void;
@@ -9,11 +10,67 @@ interface HeroProps {
 
 const Hero = ({ onRegisterClick }: HeroProps) => {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
-    section?.scrollIntoView({ behavior: "smooth" });
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
+    }
   };
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    setIsMenuOpen(false);
+  };
+
+  const NavLinks = () => (
+    <>
+      <button
+        onClick={() => scrollToSection("about")}
+        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
+        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+      >
+        Over de Rally
+      </button>
+      <button
+        onClick={() => scrollToSection("route")}
+        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
+        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+      >
+        Route
+      </button>
+      <button
+        onClick={() => handleNavigation("/auto")}
+        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
+        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+      >
+        Auto
+      </button>
+      <button
+        onClick={() => scrollToSection("register")}
+        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
+        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+      >
+        Inschrijven
+      </button>
+      <button
+        onClick={() => handleNavigation("/inpaklijst")}
+        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
+        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+      >
+        Inpaklijst
+      </button>
+      <button
+        onClick={() => scrollToSection("faq")}
+        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
+        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+      >
+        FAQ
+      </button>
+    </>
+  );
 
   return (
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
@@ -27,48 +84,33 @@ const Hero = ({ onRegisterClick }: HeroProps) => {
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/80 via-secondary/60 to-secondary/90" />
       </div>
 
-      {/* Navigatie */}
+      {/* Desktop Navigatie */}
       <nav
-        className="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-center space-x-8
+        className="hidden md:flex absolute top-0 left-0 w-full z-20 px-8 py-6 justify-center space-x-8
         backdrop-blur-md rounded-b-lg shadow-md
         bg-gradient-to-b from-secondary/60 via-secondary/50 to-secondary/70"
       >
-        <button
-          onClick={() => scrollToSection("about")}
-          className="text-white text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-        >
-          Over de Rally
-        </button>
-        <button
-          onClick={() => navigate("/auto")}
-          className="text-white text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-        >
-          Auto
-        </button>
-        <button
-          onClick={() => scrollToSection("register")}
-          className="text-white text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-        >
-          Inschrijven
-        </button>
-        <button
-          onClick={() => navigate("/inpaklijst")}
-          className="text-white text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-        >
-          Inpaklijst
-        </button>
-        <button
-          onClick={() => navigate("/voorwaarden")}
-          className="text-white text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-        >
-          Voorwaarden
-        </button>
+        <NavLinks />
       </nav>
+
+      {/* Mobile Navigatie Toggle */}
+      <div className="md:hidden absolute top-4 right-4 z-50">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="text-white hover:bg-white/20"
+        >
+          {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+        </Button>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-secondary/95 backdrop-blur-lg flex flex-col items-center justify-center space-y-8 animate-in fade-in slide-in-from-top-10 duration-200">
+          <NavLinks />
+        </div>
+      )}
 
       {/* Hero content */}
       <div className="relative z-10 container mx-auto px-4 py-20 text-center flex flex-col items-center justify-center flex-grow">
@@ -102,7 +144,6 @@ const Hero = ({ onRegisterClick }: HeroProps) => {
             >
               <Flame className="mr-2 h-5 w-5" />
               Schrijf je in
-              <span className="ml-2 text-sm opacity-80">(vanaf half november)</span>
             </Button>
 
             <Button

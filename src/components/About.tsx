@@ -11,7 +11,7 @@ const About = () => {
     {
       icon: Calendar,
       label: "Periode",
-      value: "Juli 2026 t/m 8 Juli 2026"
+      value: "2 Juli 2026 t/m 8 Juli 2026"
     },
     {
       icon: Users,
@@ -34,9 +34,9 @@ const About = () => {
 
           <div className="space-y-4 text-lg text-muted-foreground">
             <p className="leading-relaxed">
-              Welkom bij de <span className="text-primary font-semibold">Visplaat Ball & Grill Rally</span>: 
+              Welkom bij de <span className="text-primary font-semibold">Ball & Grill Rally</span>: 
               waar avontuur, humor en gehaktballen samenkomen.
-              Dit is geen gewone roadtrip – dit is een vijfdaags avontuur vol 
+              Dit is geen gewone roadtrip – dit is een zevendaagse avontuur vol 
               onverwachte wendingen en de geur van gegrilde perfectie.
             </p>
 

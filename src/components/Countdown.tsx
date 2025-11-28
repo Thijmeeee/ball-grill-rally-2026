@@ -13,7 +13,7 @@ interface CountdownProps {
 }
 
 const Countdown = ({ onFinish, targetDate }: CountdownProps) => {
-  const defaultTarget = new Date("2025-11-22T20:00:00");
+  const defaultTarget = new Date("2025-12-14T20:00:00");
   const resolvedTarget = targetDate ? new Date(targetDate) : defaultTarget;
   
   const calculateTimeLeft = (): TimeLeft => {
