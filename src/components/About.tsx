@@ -1,79 +1,59 @@
-import { MapPin, Calendar, Users, Flame } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Flame, Map, Users } from "lucide-react";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 
 const About = () => {
-  const details = [
+  const cards = [
     {
-      icon: MapPin,
-      label: "Start",
-      value: "Alblasserdam"
-    },
-    {
-      icon: Calendar,
-      label: "Periode",
-      value: "2 Juli 2026 t/m 8 Juli 2026"
+      icon: Map,
+      title: "7 LANDEN",
+      description: "Een epische tocht van 2500km door de mooiste landschappen van Europa.",
     },
     {
       icon: Users,
-      label: "Deelnemers",
-      value: "Avonturiers met smaak"
-    }
+      title: "VRIENDSCHAP",
+      description: "Samen rijden, samen feesten. Maak vrienden voor het leven.",
+    },
+    {
+      icon: Flame,
+      title: "GEHAKTBALLEN",
+      description: "Onze signatuur. Elke dag de beste ballen van de grill.",
+    },
   ];
 
   return (
-    <section id="about" className="py-24 bg-[#F5F5F0] relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-
+    <section id="about" className="py-24 md:py-32 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <ScrollAnimation animation="fade-in">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-display text-5xl md:text-6xl text-foreground mb-6">
+          <div className="text-center mb-16">
+            <span className="text-primary font-bold tracking-widest uppercase mb-4 block">Over de Rally</span>
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-secondary mb-8">
               HET AVONTUUR
             </h2>
-
-            <div className="space-y-4 text-lg text-muted-foreground">
-              <p className="leading-relaxed">
-                Welkom bij de <span className="text-primary font-semibold">Ball & Grill Rally</span>:
-                waar avontuur, humor en gehaktballen samenkomen.
-                Dit is geen gewone roadtrip – dit is een zevendaagse avontuur vol
-                onverwachte wendingen en de geur van gegrilde perfectie.
-              </p>
-
-              <p className="leading-relaxed">
-                Laad je BBQ in en bereid je voor op
-                een reis die je nooit zult vergeten. Van avontuurlijke campings tot
-                uitdagende opdrachten.
-              </p>
-
-              <p className="text-xl font-semibold text-foreground italic mt-8">
-                "Geen rally zonder rook, geen grill zonder gekkigheid!"
-              </p>
-            </div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              De Ball & Grill Rally is niet zomaar een roadtrip. Het is een week vol actie,
+              avontuur en gezelligheid. We rijden over de mooiste wegen, kamperen op unieke
+              locaties en sluiten elke dag af met een goed feestje.
+            </p>
           </div>
         </ScrollAnimation>
 
-        {/* Details Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto justify-center">
-          {details.map((detail, index) => (
+        <div className="grid md:grid-cols-3 gap-8">
+          {cards.map((card, index) => (
             <ScrollAnimation key={index} delay={index * 100} animation="slide-up">
-              <Card
-                className="p-6 bg-card hover:shadow-elevated transition-all duration-300 border-border hover:border-primary/30 group hover:-translate-y-1 h-full"
-              >
-                <div className="flex flex-col items-center text-center space-y-3">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors group-hover:scale-110 duration-300">
-                    <detail.icon className="w-7 h-7 text-primary" />
+              <Card className="p-8 h-full bg-card border-none shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                <div className="flex flex-col items-center text-center space-y-6">
+                  <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:rotate-12 transition-all duration-300">
+                    <card.icon className="w-10 h-10 text-primary group-hover:text-white transition-colors" />
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground font-medium mb-1">
-                      {detail.label}
-                    </p>
-                    <p className="text-lg font-bold text-foreground">
-                      {detail.value}
-                    </p>
-                  </div>
+
+                  <h3 className="font-display text-3xl text-secondary">
+                    {card.title}
+                  </h3>
+
+                  <p className="text-muted-foreground leading-relaxed">
+                    {card.description}
+                  </p>
                 </div>
               </Card>
             </ScrollAnimation>

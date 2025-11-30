@@ -1,182 +1,83 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Flame, Menu, X } from "lucide-react";
-import heroImage from "@/assets/hero-volvo-rally.jpg";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { ArrowRight, Flame } from "lucide-react";
+import backgroundVideo from "@/assets/background-video.mp4";
+import { useEffect, useRef } from "react";
 
-import { toast } from "sonner";
+import Navbar from "./Navbar";
 
 interface HeroProps {
   onRegisterClick: () => void;
 }
 
 const Hero = ({ onRegisterClick }: HeroProps) => {
-  const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [titleClicks, setTitleClicks] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
     }
   };
 
-  const handleNavigation = (path: string) => {
-    navigate(path);
-    setIsMenuOpen(false);
-  };
-
-  const handleTitleClick = () => {
-    const newCount = titleClicks + 1;
-    setTitleClicks(newCount);
-
-    if (newCount === 5) {
-      toast.success("MEATBALL MODE ACTIVATED! 🍝", {
-        description: "Pas op voor vallende gehaktballen! (Niet echt, maar wel een leuk kleurtje)",
-        duration: 5000,
-      });
-
-      // Change primary color to Meatball Brown
-      document.documentElement.style.setProperty("--primary", "25 76% 31%"); // #8B4513 approx HSL
-      document.documentElement.style.setProperty("--primary-foreground", "0 0% 100%");
-
-      // Reset after 10 seconds
-      setTimeout(() => {
-        document.documentElement.style.removeProperty("--primary");
-        document.documentElement.style.removeProperty("--primary-foreground");
-        toast.info("Meatball Mode Deactivated", { duration: 2000 });
-        setTitleClicks(0);
-      }, 10000);
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.50;
     }
-  };
-
-  const NavLinks = () => (
-    <>
-      <button
-        onClick={() => scrollToSection("about")}
-        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-      >
-        Over de Rally
-      </button>
-      <button
-        onClick={() => scrollToSection("route")}
-        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-      >
-        Route
-      </button>
-      <button
-        onClick={() => handleNavigation("/auto")}
-        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-      >
-        Auto
-      </button>
-      <button
-        onClick={() => scrollToSection("register")}
-        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-      >
-        Inschrijven
-      </button>
-      <button
-        onClick={() => handleNavigation("/inpaklijst")}
-        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-      >
-        Inpaklijst
-      </button>
-      <button
-        onClick={() => scrollToSection("faq")}
-        className="text-white text-2xl md:text-3xl font-bold uppercase tracking-wide hover:text-primary transition-colors"
-        style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-      >
-        FAQ
-      </button>
-    </>
-  );
+  }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
-      {/* Achtergrondafbeelding met overlay */}
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+      <Navbar />
+
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0 overflow-hidden">
-        <img
-          src={heroImage}
-          alt="Rally car adventure at sunset"
+        <video
+          ref={videoRef}
+          src={backgroundVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover animate-zoom-slow"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/50 to-primary/20 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent" />
+        {/* Gradient Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/80 via-secondary/40 to-secondary/90 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      {/* Desktop Navigatie */}
-      <nav
-        className="hidden md:flex absolute top-0 left-0 w-full z-20 px-8 py-6 justify-center space-x-8
-        backdrop-blur-md rounded-b-lg shadow-md
-        bg-gradient-to-b from-secondary/80 via-secondary/60 to-transparent"
-      >
-        <NavLinks />
-      </nav>
+      {/* Hero Content */}
+      <div className="relative z-10 container mx-auto px-4 text-center flex flex-col items-center justify-center h-full pt-20">
+        <div className="animate-fade-in space-y-8 max-w-5xl mx-auto">
 
-      {/* Mobile Navigatie Toggle */}
-      <div className="md:hidden absolute top-4 right-4 z-50">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-white hover:bg-white/20"
-        >
-          {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
-        </Button>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-secondary/95 backdrop-blur-lg flex flex-col items-center justify-center space-y-8 animate-in fade-in slide-in-from-top-10 duration-200">
-          <NavLinks />
-        </div>
-      )}
-
-      {/* Hero content */}
-      <div className="relative z-10 container mx-auto px-4 py-20 text-center flex flex-col items-center justify-center flex-grow">
-        <div className="animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full px-6 py-2 mb-8 shadow-[0_0_30px_rgba(251,146,60,0.3)] hover:bg-primary/30 transition-colors cursor-default">
+          {/* Date Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 shadow-lg hover:bg-white/20 transition-colors cursor-default">
             <Flame className="w-4 h-4 text-primary animate-pulse" />
-            <span className="text-primary-foreground font-semibold text-sm tracking-wide uppercase">
-              2 Juli 2026 t/m 8 Juli 2026 • Alblasserdam
+            <span className="text-white font-bold text-sm tracking-widest uppercase">
+              2 - 8 Juli 2026 • Alblasserdam
             </span>
           </div>
 
-          <h1
-            onClick={handleTitleClick}
-            className="font-display text-6xl md:text-8xl lg:text-9xl text-white mb-6 leading-none tracking-tight drop-shadow-2xl cursor-pointer select-none active:scale-95 transition-transform"
-          >
+          {/* Main Title */}
+          <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] text-white leading-[0.9] tracking-tighter drop-shadow-2xl select-none p-4">
             BALL & GRILL
             <br />
-            <span className="text-gradient-fire glow-fire relative inline-block">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-primary relative inline-block pb-2 pr-2">
               RALLY 2026
-              <span className="absolute -inset-1 bg-primary/20 blur-xl -z-10 rounded-full opacity-50 animate-pulse" />
             </span>
           </h1>
 
-          <p className="text-2xl md:text-3xl text-white/90 font-semibold mb-4 max-w-3xl mx-auto drop-shadow-lg">
-            7 dagen en een legendarisch avontuur
+          {/* Subtitle */}
+          <p className="text-xl md:text-3xl text-white/90 font-medium max-w-3xl mx-auto drop-shadow-lg leading-relaxed">
+            7 Landen. 2500 Kilometer. <span className="text-primary font-bold">Eén Legendarisch Avontuur.</span>
           </p>
 
-          <p className="text-lg md:text-xl text-white/70 mb-12 max-w-2xl mx-auto drop-shadow-md">
-            Waar avontuur, humor en gehaktballen samenkomen
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12">
             <Button
               size="lg"
               onClick={() => scrollToSection("register")}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-8 py-6 shadow-[0_0_40px_hsl(25_95%_53%_/_0.6)] hover:shadow-[0_0_60px_hsl(25_95%_53%_/_0.8)] hover:scale-105 transition-all duration-300"
+              className="bg-primary hover:bg-primary/90 text-white font-bold text-lg px-10 py-8 rounded-lg shadow-[0_0_40px_hsl(20_100%_45%_/_0.4)] hover:shadow-[0_0_60px_hsl(20_100%_45%_/_0.6)] hover:scale-105 transition-all duration-300 uppercase tracking-wide"
             >
-              <Flame className="mr-2 h-5 w-5 animate-bounce" />
               Schrijf je in
             </Button>
 
@@ -184,24 +85,26 @@ const Hero = ({ onRegisterClick }: HeroProps) => {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("about")}
-              className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 font-semibold text-lg px-8 py-6 hover:scale-105 transition-all duration-300"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-secondary font-bold text-lg px-10 py-8 rounded-lg hover:scale-105 transition-all duration-300 uppercase tracking-wide"
             >
-              Meer over het avontuur
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              Ontdek de route
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-20" onClick={() => scrollToSection("about")}>
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2 hover:border-white transition-colors">
-          <div className="w-1.5 h-3 bg-white/50 rounded-full" />
+      {/* Scroll Indicator */}
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-20 group"
+        onClick={() => scrollToSection("about")}
+      >
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-white/60 text-xs font-bold uppercase tracking-widest group-hover:text-white transition-colors">Scroll</span>
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2 group-hover:border-white transition-colors">
+            <div className="w-1.5 h-3 bg-primary rounded-full" />
+          </div>
         </div>
       </div>
-
-      {/* Wave Separator */}
-
     </section>
   );
 };

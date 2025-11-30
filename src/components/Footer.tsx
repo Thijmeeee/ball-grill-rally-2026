@@ -1,34 +1,61 @@
-import { Flame } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground py-12">
+    <footer className="bg-[#1a1615] text-white py-16 border-t border-white/10">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center text-center space-y-8">
-          <div className="flex items-center gap-3">
-            <Flame className="w-8 h-8 text-primary" />
-            <span className="font-display text-3xl">BALL & GRILL RALLY</span>
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
+          {/* Brand */}
+          <div className="space-y-4">
+            <h3 className="font-display text-3xl text-white">
+              BALL & GRILL <span className="text-primary">RALLY</span>
+            </h3>
+            <p className="text-white/60 leading-relaxed max-w-xs">
+              Het ultieme auto-avontuur door Europa. Vriendschap, motoren en de beste gehaktballen.
+            </p>
           </div>
 
-          <p className="text-secondary-foreground/80 max-w-md">
-            Waar avontuur, humor en gehaktballen samenkomen.
-          </p>
-
-          <nav className="flex flex-wrap justify-center gap-6 md:gap-8">
-            <a href="/" className="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">Home</a>
-            <a href="#route" className="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">Route</a>
-            <a href="/auto" className="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">Auto</a>
-            <a href="/inpaklijst" className="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">Inpaklijst</a>
-            <a href="/voorwaarden" className="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">Voorwaarden</a>
-          </nav>
-
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-secondary-foreground/60 pt-4 border-t border-secondary-foreground/10 w-full max-w-2xl">
-            <span>© 2026 Ball & Grill Rally</span>
-            <span className="hidden md:inline">•</span>
-            <span>Alblasserdam</span>
-            <span className="hidden md:inline">•</span>
-            <span>2 Juli 2026 t/m 8 Juli 2026</span>
+          {/* Contact */}
+          <div className="space-y-4">
+            <h4 className="font-bold text-lg uppercase tracking-wider text-primary">Contact</h4>
+            <ul className="space-y-3 text-white/80">
+              <li className="flex items-center gap-3 hover:text-white transition-colors">
+                <Mail className="w-5 h-5 text-primary" />
+                <a href="mailto:info@ballgrillrally.nl">info@ballgrillrally.nl</a>
+              </li>
+              <li className="flex items-center gap-3 hover:text-white transition-colors">
+                <Phone className="w-5 h-5 text-primary" />
+                <a href="tel:+31612345678">+31 6 45744311</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <MapPin className="w-5 h-5 text-primary" />
+                <span>Nederland</span>
+              </li>
+            </ul>
           </div>
+
+          {/* Socials */}
+          <div className="space-y-4">
+            <h4 className="font-bold text-lg uppercase tracking-wider text-primary">Volg Ons</h4>
+            <div className="flex gap-4">
+              <a
+                href="#"
+                className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 group"
+              >
+                <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              </a>
+              <a
+                href="#"
+                className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 group"
+              >
+                <Facebook className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-white/10 text-center text-white/40 text-sm">
+          <p>&copy; {new Date().getFullYear()} Ball & Grill Rally. Alle rechten voorbehouden.</p>
         </div>
       </div>
     </footer>

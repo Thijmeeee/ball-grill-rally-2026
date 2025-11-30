@@ -1,0 +1,193 @@
+{
+    "design_system": {
+        "name": "Budapest Rally Design System",
+        "version": "1.0.0",
+        "overview": {
+            "style": "Bold, adventurous, high-energy road trip aesthetic",
+            "theme": "Automotive rally event with European roadtrip vibes",
+            "target_audience": "Young adults, adventure seekers, car enthusiasts"
+        },
+        "color_palette": {
+            "primary": {
+                "brand_red": "#E74536",
+                "description": "Vibrant red-orange, used for CTAs and brand elements"
+            },
+            "secondary": {
+                "deep_burgundy": "#5A2621",
+                "description": "Dark red-brown for text overlays and section backgrounds"
+            },
+            "accent": {
+                "off_white": "#F5F1ED",
+                "description": "Cream/beige for light backgrounds and cards"
+            },
+            "neutral": {
+                "charcoal": "#2B2420",
+                "description": "Dark brown-black for primary text"
+            },
+            "usage_notes": "High contrast between light and dark sections. Red used sparingly for emphasis and CTAs."
+        },
+        "typography": {
+            "heading_font": {
+                "style": "Heavy, condensed, stencil-like display font",
+                "characteristics": "Bold, uppercase, slightly distressed or industrial feel",
+                "usage": "Page titles, section headers, logo text",
+                "example_weight": "800-900"
+            },
+            "body_font": {
+                "style": "Clean, modern sans-serif",
+                "characteristics": "Medium weight, excellent readability",
+                "usage": "Paragraphs, descriptions, UI text",
+                "example_weight": "400-500"
+            },
+            "hierarchy": {
+                "h1": "Very large (48-72px), uppercase, heavy weight",
+                "h2": "Large (36-48px), uppercase, heavy weight",
+                "h3": "Medium (24-32px), may use uppercase or title case",
+                "body": "16-18px, regular weight, comfortable line-height (1.6-1.8)"
+            }
+        },
+        "layout_structure": {
+            "hero_section": {
+                "type": "Full-width hero with background image/video",
+                "overlay": "Dark gradient or color overlay (30-50% opacity)",
+                "content_alignment": "Center-aligned",
+                "elements": [
+                    "Logo at top",
+                    "Large headline text",
+                    "Subheading/tagline",
+                    "Date and location info",
+                    "Prominent CTA button",
+                    "Social proof (reviews, ratings)"
+                ]
+            },
+            "content_sections": {
+                "alternating_backgrounds": "Light cream and dark burgundy sections alternate",
+                "spacing": "Generous vertical padding (80-120px)",
+                "max_width": "Container max-width around 1200-1400px",
+                "grid_usage": "Multi-column layouts for feature cards"
+            },
+            "card_components": {
+                "style": "Clean white/cream cards with subtle shadows",
+                "image_treatment": "Full-width images at top of cards",
+                "padding": "20-30px internal padding",
+                "hover_effects": "Subtle lift or shadow increase",
+                "numbered_badges": "Small circular numbered badges in top-right corner"
+            }
+        },
+        "component_patterns": {
+            "buttons": {
+                "primary": {
+                    "background": "Brand red (#E74536)",
+                    "text_color": "White or cream",
+                    "border_radius": "4-8px (slightly rounded)",
+                    "padding": "14-18px horizontal, 12-16px vertical",
+                    "font_weight": "600-700",
+                    "hover_state": "Darker red or slight scale increase"
+                },
+                "secondary": {
+                    "background": "Transparent or white",
+                    "text_color": "Brand red",
+                    "border": "2px solid current color",
+                    "style": "Outlined/ghost button"
+                }
+            },
+            "navigation": {
+                "position": "Fixed top bar",
+                "background": "Transparent with blur or solid on scroll",
+                "layout": "Logo left, menu items right",
+                "style": "Clean, minimal, horizontal menu",
+                "language_selector": "Flag icon or dropdown"
+            },
+            "image_galleries": {
+                "layout": "Horizontal scrolling carousel or grid",
+                "aspect_ratio": "3:2 or 16:9 for landscape photos",
+                "treatment": "High-quality, vibrant photography",
+                "subjects": "Cars, landscapes, people celebrating, scenic routes"
+            },
+            "info_cards": {
+                "icon_usage": "Simple line icons for features",
+                "layout": "Icon + heading + description",
+                "spacing": "Consistent grid spacing",
+                "alignment": "Left-aligned text within cards"
+            },
+            "accordion_faq": {
+                "style": "Clean expand/collapse sections",
+                "indicator": "Plus/minus icons",
+                "dividers": "Subtle lines between items",
+                "padding": "Generous click targets"
+            }
+        },
+        "visual_style": {
+            "photography": {
+                "subjects": "Vintage cars, scenic European landscapes, group celebrations, road scenes",
+                "treatment": "Vibrant, slightly warm color grading",
+                "composition": "Dynamic angles, action shots, lifestyle moments",
+                "quality": "High-resolution, professional"
+            },
+            "illustrations_graphics": {
+                "map_style": "Simplified, flat design with route markers",
+                "icons": "Line-based or minimal solid icons",
+                "flag_usage": "Country flags as location indicators",
+                "badges": "Circular numbered badges for sequence/steps"
+            },
+            "texture_effects": {
+                "overlays": "Gradient overlays on hero images",
+                "shadows": "Subtle box-shadows on cards (0 4px 12px rgba(0,0,0,0.1))",
+                "borders": "Minimal use, clean lines when needed"
+            }
+        },
+        "interaction_patterns": {
+            "animations": {
+                "scroll_effects": "Subtle parallax or fade-in on scroll",
+                "hover_states": "Smooth transitions (0.3s ease)",
+                "button_interactions": "Scale or shadow changes",
+                "carousel": "Smooth horizontal sliding with navigation arrows"
+            },
+            "responsive_behavior": {
+                "mobile_first": true,
+                "breakpoints": {
+                    "mobile": "< 768px - Single column, stacked cards",
+                    "tablet": "768-1024px - Two column grids",
+                    "desktop": "> 1024px - Multi-column layouts"
+                },
+                "mobile_nav": "Hamburger menu"
+            }
+        },
+        "content_tone": {
+            "headlines": "Bold, exciting, adventure-focused",
+            "body_copy": "Friendly, enthusiastic, informative",
+            "cta_language": "Action-oriented (\"Inschrijven\", \"meer info\")",
+            "multilingual": "Dutch primary, with language switching capability"
+        },
+        "spacing_system": {
+            "scale": "8px base unit",
+            "common_values": [
+                "8px (xs)",
+                "16px (sm)",
+                "24px (md)",
+                "32px (lg)",
+                "48px (xl)",
+                "64px (2xl)",
+                "96px (3xl)"
+            ],
+            "section_padding": "64-120px vertical",
+            "container_padding": "16-24px horizontal on mobile, 32-48px on desktop"
+        },
+        "design_principles": {
+            "hierarchy": "Clear visual hierarchy with bold headlines and structured content",
+            "contrast": "Strong color contrast for readability and impact",
+            "whitespace": "Generous breathing room between sections",
+            "consistency": "Repeating patterns for familiarity",
+            "energy": "Dynamic photography and bold typography create excitement",
+            "trust": "Social proof (reviews, ratings) prominently displayed",
+            "clarity": "Information organized in scannable formats (cards, lists, timelines)"
+        },
+        "implementation_notes": {
+            "framework_agnostic": "Design system can be implemented in any modern web framework",
+            "accessibility": "Maintain WCAG AA contrast ratios, semantic HTML structure",
+            "performance": "Optimize images, lazy-load below-fold content",
+            "seo": "Semantic markup, proper heading hierarchy",
+            "cms_friendly": "Modular sections that can be reordered or removed"
+        }
+    }
+}

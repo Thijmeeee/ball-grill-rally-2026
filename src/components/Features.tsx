@@ -1,81 +1,79 @@
-import { Award, Map, Tent, Trophy, Flame, PartyPopper } from "lucide-react";
+import { Beer, Car, Map, Medal, Music, Tent } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import ScrollAnimation from "@/components/ui/scroll-animation";
-
 
 const Features = () => {
   const features = [
     {
       icon: Map,
-      title: "7 Landen",
-      description: "Een epische tocht door Nederland, Duitsland, Oostenrijk, Italië, Slovenië, Kroatië en Hongarije."
-    },
-    {
-      icon: Award,
-      title: "Challenges",
-      description: "Dagelijkse opdrachten waarmee je punten kunt verdienen voor het klassement."
+      title: "UNIEKE ROUTES",
+      description: "Elke dag een nieuwe verrassing. Van bergpassen tot kustwegen, wij hebben de mooiste routes voor je uitgestippeld.",
     },
     {
       icon: Tent,
-      title: "Campings",
-      description: "Overnacht op zorgvuldig geselecteerde campings op de mooiste locaties."
+      title: "TOP CAMPINGS",
+      description: "Overnacht op bijzondere locaties. Geen saaie grasvelden, maar plekken met sfeer en uitzicht.",
     },
     {
-      icon: Trophy,
-      title: "Prijzen",
-      description: "Strijd mee voor de titel 'Rally Kampioen 2026' en win fantastische prijzen."
+      icon: Beer,
+      title: "ETEN & DRINKEN",
+      description: "Ontbijt en diner zijn vaak inbegrepen. En ja, er zullen gehaktballen zijn.",
     },
     {
-      icon: Flame,
-      title: "BBQ & Gezelligheid",
-      description: "Elke avond samen eten, drinken en sterke verhalen delen bij het kampvuur."
+      icon: Car,
+      title: "PECHHULP",
+      description: "Onze technische crew rijdt mee om je weer op weg te helpen als je bolide kuren heeft.",
     },
     {
-      icon: PartyPopper,
-      title: "Finish Feest",
-      description: "Een legendarisch eindfeest in Boedapest om de week in stijl af te sluiten."
-    }
+      icon: Music,
+      title: "FEESTJES",
+      description: "Na het rijden is het tijd voor gezelligheid. Kampvuur, muziek en sterke verhalen.",
+    },
+    {
+      icon: Medal,
+      title: "PRIJZEN",
+      description: "Strijd mee voor de dagprijzen en natuurlijk de felbegeerde eindoverwinning.",
+    },
   ];
 
   return (
-    <section id="about" className="py-24 bg-[#F5F5F0] relative overflow-hidden">
+    <section id="features" className="py-24 md:py-32 bg-secondary relative overflow-hidden">
+      {/* Background Texture */}
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
+
       <div className="container mx-auto px-4 relative z-10">
         <ScrollAnimation animation="fade-in">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-display text-5xl md:text-6xl text-foreground mb-6">
-              WAAROM DEZE RALLY?
+          <div className="text-center mb-20">
+            <span className="text-primary font-bold tracking-widest uppercase mb-4 block">Inclusief</span>
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-white mb-6">
+              WAT JE KRIJGT
             </h2>
-
-            <p className="text-lg text-muted-foreground">
-              Meer dan alleen een autorit - een ervaring voor het leven
-            </p>
           </div>
         </ScrollAnimation>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {features.map((feature, index) => (
-            <ScrollAnimation key={index} delay={index * 100} animation="slide-up">
-              <Card
-                className="p-8 bg-card hover:shadow-elevated transition-all duration-300 border-border hover:border-primary/30 group hover:-translate-y-1 h-full"
-              >
-                <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/10 transition-all group-hover:scale-110 duration-300">
-                    <feature.icon className="w-8 h-8 text-primary group-hover:rotate-12 transition-transform duration-300" />
+            <ScrollAnimation key={index} delay={index * 100} animation="zoom-in">
+              <Card className="h-full p-8 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all duration-300 group">
+                <div className="flex flex-col items-start space-y-6">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:rotate-6 transition-all duration-300">
+                    <feature.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="font-display text-2xl">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
+
+                  <div>
+                    <h3 className="font-display text-2xl text-white mb-3 group-hover:text-primary transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/60 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
               </Card>
             </ScrollAnimation>
           ))}
         </div>
       </div>
-
-
     </section>
   );
 };
