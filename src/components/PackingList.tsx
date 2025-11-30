@@ -110,7 +110,7 @@ const PackingList = () => {
                 <div className="bg-primary/10 p-2 rounded-lg">
                   <category.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-display text-xl">{category.title}</h3>
+                <h3 className="font-display text-2xl">{category.title}</h3>
               </div>
               <ul className="p-6 space-y-3">
                 {category.items.map((item, itemIndex) => (

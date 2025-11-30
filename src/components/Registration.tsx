@@ -4,13 +4,14 @@ import { Card } from "@/components/ui/card";
 import { Flame, Bell } from "lucide-react";
 import Countdown from "./Countdown";
 
+
 interface RegistrationProps {
   onRegisterClick: () => void;
 }
 
 const Registration = ({ onRegisterClick }: RegistrationProps) => {
   // Consider the same default target as the countdown component
-  const defaultTarget = new Date("2025-11-22T20:00:00");
+  const defaultTarget = new Date("2025-12-14T20:00:00");
   const [isOpen, setIsOpen] = useState<boolean>(() => {
     return new Date().getTime() >= defaultTarget.getTime();
   });
@@ -18,14 +19,7 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
   const handleCountdownFinish = () => setIsOpen(true);
 
   return (
-    <section id="register" className="py-24 bg-gradient-to-b from-secondary/20 to-secondary/30 relative overflow-hidden">
-      {/* Decorative flames */}
-      <div className="absolute top-10 left-10 text-primary/10 animate-float">
-        <Flame className="w-32 h-32" />
-      </div>
-      <div className="absolute bottom-10 right-10 text-primary/10 animate-float" style={{ animationDelay: '2s' }}>
-        <Flame className="w-24 h-24" />
-      </div>
+    <section id="register" className="py-24 bg-[#FFF0E5] relative overflow-hidden">
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto">
@@ -45,7 +39,7 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
                   <span className="text-gradient-fire">HET AVONTUUR?</span>
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Inschrijvingen openen zaterdag 22 november om 20:00
+                  Inschrijvingen openen zondag 14 december om 20:00
                 </p>
               </div>
 
@@ -74,6 +68,8 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
           </Card>
         </div>
       </div>
+
+
     </section>
   );
 };

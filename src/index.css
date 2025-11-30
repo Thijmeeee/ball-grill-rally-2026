@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
     --background: 40 20% 97%;
@@ -44,10 +40,10 @@ All colors MUST be HSL.
 
     /* Fire gradient */
     --gradient-fire: linear-gradient(135deg, hsl(15 90% 55%) 0%, hsl(35 95% 50%) 50%, hsl(45 90% 55%) 100%);
-    
+
     /* Smoky overlay */
     --gradient-smoke: linear-gradient(180deg, hsl(20 10% 10% / 0.8) 0%, hsl(20 10% 10% / 0.3) 100%);
-    
+
     /* Sunset gradient */
     --gradient-sunset: linear-gradient(180deg, hsl(15 85% 45%) 0%, hsl(35 90% 55%) 50%, hsl(45 70% 60%) 100%);
 
@@ -100,7 +96,12 @@ All colors MUST be HSL.
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold tracking-tight;
   }
 }
@@ -114,13 +115,24 @@ All colors MUST be HSL.
     text-shadow: 0 0 20px hsl(25 95% 53% / 0.5);
   }
 
+  .glow-orange {
+    box-shadow: 0 0 20px hsl(25 95% 53% / 0.4);
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
   }
 
   .parallax-slow {
@@ -134,5 +146,98 @@ All colors MUST be HSL.
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.7s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.7s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.7s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.7s ease-out forwards;
+  }
+
+  .animate-zoom-in {
+    animation: zoomIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-zoom-slow {
+    animation: zoomSlow 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes zoomSlow {
+    from {
+      transform: scale(1);
+    }
+
+    to {
+      transform: scale(1.1);
+    }
   }
 }

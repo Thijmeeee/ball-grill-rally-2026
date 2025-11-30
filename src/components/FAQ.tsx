@@ -84,7 +84,7 @@ const FAQ = () => {
                 <div className="space-y-8">
                     {faqs.map((category, catIndex) => (
                         <div key={catIndex}>
-                            <h3 className="font-display text-2xl text-white mb-4 pl-2 border-l-4 border-primary">{category.category}</h3>
+                            <h3 className="font-display text-3xl text-white mb-4 pl-2 border-l-4 border-primary">{category.category}</h3>
                             <Accordion type="single" collapsible className="w-full space-y-4">
                                 {category.items.map((faq, index) => (
                                     <AccordionItem key={index} value={`item-${catIndex}-${index}`} className="bg-white/5 px-6 rounded-xl border border-white/10 shadow-sm">

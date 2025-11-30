@@ -42,30 +42,39 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
     setIsSubmitting(true);
 
     try {
-      // 1. Save to Supabase
+      // 1. Save to Supabase - transform camelCase to snake_case
+      const dbData = {
+        team_name: formData.teamName,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        team_size: parseInt(formData.teamSize),
+        car: formData.car,
+        recipe: formData.recipe
+      };
+
       const { error: dbError } = await supabase
         .from('registrations')
-        .insert([formData]);
+        .insert([dbData]);
 
       if (dbError) {
         console.error('Supabase error:', dbError);
+        console.error('Error details:', JSON.stringify(dbError, null, 2));
         // We continue even if DB fails for now, or you can throw error
         // throw dbError; 
       }
 
-      // 2. Send Email via EmailJS
-      // TODO: Replace with your actual Service ID, Template ID, and Public Key
-      // await emailjs.send(
-      //   'YOUR_SERVICE_ID',
-      //   'YOUR_TEMPLATE_ID',
-      //   {
-      //     to_name: formData.name,
-      //     to_email: formData.email,
-      //     team_name: formData.teamName,
-      //     message: "Je bent ingeschreven! We nemen snel contact op."
-      //   },
-      //   'YOUR_PUBLIC_KEY'
-      // );
+      await emailjs.send(
+        'service_vdr96lk',
+        'template_892xnai',
+        {
+          to_name: formData.name,
+          to_email: formData.email,
+          team_name: formData.teamName,
+          message: "Je bent ingeschreven! We nemen snel contact op."
+        },
+        '3A-KlFMiw_IP0Ejw1'
+      );
 
       // Success UI
       toast({

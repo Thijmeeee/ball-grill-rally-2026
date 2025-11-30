@@ -1,5 +1,7 @@
 import Map from "@/components/Map";
 import { Flag, MapPin, Trophy } from "lucide-react";
+import ScrollAnimation from "@/components/ui/scroll-animation";
+
 
 const RouteSection = () => {
     const itinerary = [
@@ -13,16 +15,18 @@ const RouteSection = () => {
     ];
 
     return (
-        <section id="route" className="py-24 bg-background">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="font-display text-5xl md:text-6xl text-foreground mb-4">DE ROUTE</h2>
-                    <p className="text-xl text-muted-foreground">7 Landen, 2500 Kilometer, 1 Onvergetelijk Avontuur</p>
-                </div>
+        <section id="route" className="py-24 bg-background overflow-hidden relative">
+            <div className="container mx-auto px-4 relative z-10">
+                <ScrollAnimation animation="fade-in">
+                    <div className="text-center mb-12">
+                        <h2 className="font-display text-5xl md:text-6xl text-foreground mb-4">DE ROUTE</h2>
+                        <p className="text-xl text-muted-foreground">7 Landen, 2500 Kilometer, 1 Onvergetelijk Avontuur</p>
+                    </div>
+                </ScrollAnimation>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-start">
                     {/* Map Section */}
-                    <div className="order-2 lg:order-1 sticky top-24">
+                    <ScrollAnimation animation="slide-right" className="order-2 lg:order-1">
                         <Map />
                         <div className="mt-6 p-6 bg-secondary/5 rounded-xl border border-secondary/10">
                             <h3 className="font-display text-2xl mb-2">Hoogtepunten</h3>
@@ -34,25 +38,29 @@ const RouteSection = () => {
                                 <li>Finish in Boedapest</li>
                             </ul>
                         </div>
-                    </div>
+                    </ScrollAnimation>
 
                     {/* Itinerary Section */}
                     <div className="order-1 lg:order-2 space-y-6">
                         {itinerary.map((item, index) => (
-                            <div key={index} className="flex gap-4 p-6 bg-card rounded-xl shadow-sm border border-border hover:border-primary/50 transition-all group">
-                                <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                                    <item.icon className="w-6 h-6 text-primary" />
+                            <ScrollAnimation key={index} delay={index * 100} animation="slide-left">
+                                <div className="flex gap-4 p-6 bg-card rounded-xl shadow-sm border border-border hover:border-primary/50 transition-all group hover:-translate-x-2">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors group-hover:scale-110 duration-300">
+                                        <item.icon className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div>
+                                        <span className="text-sm font-bold text-primary uppercase tracking-wider">{item.day}</span>
+                                        <h3 className="font-display text-2xl mb-2">{item.title}</h3>
+                                        <p className="text-muted-foreground">{item.desc}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span className="text-sm font-bold text-primary uppercase tracking-wider">{item.day}</span>
-                                    <h3 className="font-display text-2xl mb-2">{item.title}</h3>
-                                    <p className="text-muted-foreground">{item.desc}</p>
-                                </div>
-                            </div>
+                            </ScrollAnimation>
                         ))}
                     </div>
                 </div>
             </div>
+
+
         </section>
     );
 };
