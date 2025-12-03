@@ -6,7 +6,7 @@ const About = () => {
   const cards = [
     {
       icon: Map,
-      title: "7 LANDEN",
+      title: "5 LANDEN",
       description: "Een epische tocht van 2500km door de mooiste landschappen van Europa.",
     },
     {
@@ -17,7 +17,7 @@ const About = () => {
     {
       icon: Flame,
       title: "GEHAKTBALLEN",
-      description: "Onze signatuur. Elke dag de beste ballen van de grill.",
+      description: "Aan het begin van de reis de beste gehaktballen van de grill.",
     },
   ];
 
@@ -31,9 +31,9 @@ const About = () => {
               HET AVONTUUR
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              De Ball & Grill Rally is niet zomaar een roadtrip. Het is een week vol actie,
+              De Ball & Grill Rally is niet zomaar een roadtrip. Het is een trip vol actie,
               avontuur en gezelligheid. We rijden over de mooiste wegen, kamperen op unieke
-              locaties en sluiten elke dag af met een goed feestje.
+              locaties en sluiten elke dag met de grill en een borrel.
             </p>
           </div>
         </ScrollAnimation>

@@ -15,14 +15,14 @@ const defaultIcon = new Icon({
 });
 
 const locations = [
-    { name: "Alblasserdam (Start)", coords: [51.8642, 4.6597] as [number, number] },
-    { name: "Dag 1: Zwarte Woud", coords: [48.463, 8.031] as [number, number] },
-    { name: "Dag 2: Oostenrijkse Alpen", coords: [47.269, 11.404] as [number, number] },
-    { name: "Dag 3: Dolomieten", coords: [46.551, 12.136] as [number, number] },
-    { name: "Dag 4: Sloveense Meren", coords: [46.368, 14.114] as [number, number] },
-    { name: "Dag 5: Kroatische Kust", coords: [45.327, 14.442] as [number, number] },
-    { name: "Dag 6: Hongaarse Poesta", coords: [46.904, 19.693] as [number, number] },
-    { name: "Budapest (Finish)", coords: [47.4979, 19.0402] as [number, number] },
+    { name: "Dag 1: Alblasserdam", coords: [51.8642, 4.6597] as [number, number] },
+    { name: "Dag 2: SEFFERWEICH", coords: [50.093, 6.552] as [number, number] },
+    { name: "Dag 3: WALDSHUT-TIENGEN", coords: [47.610, 8.230] as [number, number] },
+    { name: "Dag 4: BINN", coords: [46.369, 8.203] as [number, number] },
+    { name: "Dag 5: SABERTRAND", coords: [45.060, 6.867] as [number, number] },
+    { name: "Dag 6: DEMI-QUARTIER", coords: [45.88, 6.639] as [number, number] },
+    { name: "Dag 7: SAINT-MAURICE-SUR-MOSELLE", coords: [47.855, 6.811] as [number, number] },
+    { name: "Dag 7: Alblasserdam", coords: [51.8642, 4.6597]  as [number, number] },
 ];
 
 const polylinePositions = locations.map(loc => loc.coords);

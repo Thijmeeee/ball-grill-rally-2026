@@ -15,7 +15,7 @@ const FAQ = () => {
         },
         {
             question: "Waar is de start?",
-            answer: "Donderdagavond rijden we met elkaar naar de eerste camping. De volgende ochtend zal daar de start plaatsvinden."
+            answer: "De start is in Alblasserdam. Exacte locatie komt een paar weken voor de start."
         },
         {
             question: "Is navigatie toegestaan?",
@@ -47,7 +47,7 @@ const FAQ = () => {
         },
         {
             question: "Hoe kan ik betalen?",
-            answer: "Via ideal of Tikkie"
+            answer: "Na de inschrijving wordt er een Tikkie gestuurd."
         }
     ];
 

@@ -39,7 +39,7 @@ const Footer = () => {
             <h4 className="font-bold text-lg uppercase tracking-wider text-primary">Volg Ons</h4>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/wasjeauto_cr25/"
                 className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 group"
               >
                 <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />

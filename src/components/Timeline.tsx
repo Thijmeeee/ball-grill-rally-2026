@@ -7,21 +7,21 @@ const Timeline = () => {
       step: "01",
       title: "DE START",
       subtitle: "DONDERDAG",
-      description: "We verzamelen in Alblasserdam voor de grote kick-off. Na de keuring en briefing vertrekken we richting het avontuur.",
+      description: "We verzamelen in Alblasserdam voor de grote start. ",
       icon: Flag,
     },
     {
       step: "02",
       title: "HET AVONTUUR",
-      subtitle: "VRIJDAG - DINSDAG",
-      description: "Vijf dagen lang rijden we de mooiste routes, voeren we challenges uit en kamperen we op unieke locaties.",
+      subtitle: "VRIJDAG - WOENSDAG",
+      description: "Zes dagen rijden we de mooiste routes, voeren we opdrachten uit en kamperen we op mooie campings.",
       icon: Tent,
     },
     {
       step: "03",
       title: "DE FINALE",
       subtitle: "WOENSDAG",
-      description: "We finishen in stijl in Boedapest met een legendarisch eindfeest en de prijsuitreiking.",
+      description: "We finishen weer in Alblasserdam met een prijsuitreiking en een groepsknuffel.",
       icon: Trophy,
     }
   ];

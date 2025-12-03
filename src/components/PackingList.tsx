@@ -1,4 +1,4 @@
-import { Check, FileText, Tent, Wrench, Shirt } from "lucide-react";
+import { Check, FileText, Tent, Wrench, Shirt, Bed, Smartphone, Music, Car } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 
@@ -31,17 +31,36 @@ const PackingList = () => {
       ]
     },
     {
-      title: "Auto & Tools",
-      icon: Wrench,
+      title: "Overnachten / Comfort",
+      icon: Bed,
+      items: [
+        "Slaap spullen",
+        "Eventueel tent",
+        "Handdoek & toiletspullen",
+        "Oordopjes",
+        "Snacks & water",
+        "Koelbox"
+      ]
+    },
+    {
+      title: "Auto",
+      icon: Car,
       items: [
         "Reservewiel & krik",
         "Startkabels",
         "Sleepkabel",
         "Gevarendriehoek",
         "Veiligheidshesjes (voor iedereen)",
+        "Olie & koelvloeistof"
+      ]
+    },
+    {
+      title: "Gereedschap",
+      icon: Wrench,
+      items: [
         "EHBO-doos",
-        "Olie & koelvloeistof",
-        "Duct tape & tie-wraps (essentieel!)"
+        "Duct tape & tie-wraps (essentieel!)",
+        "Multitool / basis gereedschap"
       ]
     },
     {
@@ -55,6 +74,27 @@ const PackingList = () => {
         "Zonnebril & zonnebrand",
         "Powerbank",
         "Goede playlist"
+      ]
+    }
+    ,
+    {
+      title: "Navigatie & Tech",
+      icon: Smartphone,
+      items: [
+        "Navigatie-app / offline kaarten",
+        "Dashcam - mogelijk",
+        "Telefoonhouder - handig!",
+        "Extra USB-laders / 12V-splitter"
+      ]
+    },
+    {
+      title: "Fun & Rally-stuff",
+      icon: Music,
+      items: [
+        "Thema-outfit",
+        "Muzieklijst",
+        "Spelletjes",
+        "Duikbril en Snorkel"
       ]
     }
   ];

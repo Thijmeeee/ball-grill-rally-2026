@@ -7,32 +7,32 @@ const Features = () => {
     {
       icon: Map,
       title: "UNIEKE ROUTES",
-      description: "Elke dag een nieuwe verrassing. Van bergpassen tot kustwegen, wij hebben de mooiste routes voor je uitgestippeld.",
+      description: "Elke dag een nieuwe verrassing. Van bergpassen tot zandwegen, wij hebben de mooiste routes voor je uitgestippeld.",
     },
     {
       icon: Tent,
       title: "TOP CAMPINGS",
-      description: "Overnacht op bijzondere locaties. Geen saaie grasvelden, maar plekken met sfeer en uitzicht.",
+      description: "Overnacht op mooie of karakteristieke campings met sfeer en uitzicht",
     },
     {
       icon: Beer,
       title: "ETEN & DRINKEN",
-      description: "Ontbijt en diner zijn vaak inbegrepen. En ja, er zullen gehaktballen zijn.",
+      description: "Dat regel je natuurlijk zelf maar op de eerste dag zijn er zeker ballen!",
     },
     {
       icon: Car,
       title: "PECHHULP",
-      description: "Onze technische crew rijdt mee om je weer op weg te helpen als je bolide kuren heeft.",
+      description: "Onze technische crew rijdt mee maar of ze je kunnen helpen zien we dan wel. We rijden met elkaar en helpen elkaar!",
     },
     {
       icon: Music,
-      title: "FEESTJES",
-      description: "Na het rijden is het tijd voor gezelligheid. Kampvuur, muziek en sterke verhalen.",
+      title: "AVONDEN",
+      description: "Na het rijden is het tijd voor gezelligheid, drankjes, BBQ en soms ook activiteiten.",
     },
     {
       icon: Medal,
       title: "PRIJZEN",
-      description: "Strijd mee voor de dagprijzen en natuurlijk de felbegeerde eindoverwinning.",
+      description: "Er zijn zeker prijzen te winnen! een vakkundige jury zal de auto beoordele en de opdrachten nakijken.",
     },
   ];
 
