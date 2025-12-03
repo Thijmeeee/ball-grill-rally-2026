@@ -9,8 +9,8 @@ interface RegistrationProps {
 }
 
 const Registration = ({ onRegisterClick }: RegistrationProps) => {
-  // Consider the same default target as the countdown component
-  const defaultTarget = new Date("2025-11-22T20:00:00");
+  // Use the same target date as the Countdown component
+  const defaultTarget = new Date("2025-12-14T20:00:00");
   const [isOpen, setIsOpen] = useState<boolean>(() => {
     return new Date().getTime() >= defaultTarget.getTime();
   });
@@ -19,14 +19,6 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
 
   return (
     <section id="register" className="py-24 bg-gradient-to-b from-secondary/20 to-secondary/30 relative overflow-hidden">
-      {/* Decorative flames */}
-      <div className="absolute top-10 left-10 text-primary/10 animate-float">
-        <Flame className="w-32 h-32" />
-      </div>
-      <div className="absolute bottom-10 right-10 text-primary/10 animate-float" style={{ animationDelay: '2s' }}>
-        <Flame className="w-24 h-24" />
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto">
           <Card className="p-12 bg-card/80 backdrop-blur-sm border-2 border-primary/20 shadow-elevated">
@@ -42,10 +34,10 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
                 <h2 className="font-display text-5xl md:text-6xl text-foreground mb-4">
                   KLAAR VOOR
                   <br />
-                  <span className="text-gradient-fire">HET AVONTUUR?</span>
+                  <span className="text-primary font-bold" >HET AVONTUUR?</span>
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Inschrijvingen openen zaterdag 22 november om 20:00
+                  Inschrijvingen openen zaterdag 14 december om 20:00
                 </p>
               </div>
 
@@ -54,10 +46,7 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
 
               <div className="space-y-4 text-muted-foreground">
                 <p className="text-lg">
-                  Zorg dat je klaar staat! De plaatsen zijn beperkt en de interesse is enorm.
-                </p>
-                <p className="italic">
-                  "Stijl. Grill. Gehaktdrang." – Dat is de Ball & Grill Rally
+                  Zorg dat je klaar staat! De plaatsen zijn beperkt.
                 </p>
               </div>
 

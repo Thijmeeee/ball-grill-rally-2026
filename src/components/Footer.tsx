@@ -11,7 +11,7 @@ const Footer = () => {
               BALL & GRILL <span className="text-primary">RALLY</span>
             </h3>
             <p className="text-white/60 leading-relaxed max-w-xs">
-              Het ultieme auto-avontuur door Europa. Vriendschap, motoren en de beste gehaktballen.
+              Het ultieme auto-avontuur door Europa.
             </p>
           </div>
 
@@ -41,11 +41,15 @@ const Footer = () => {
               <a
                 href="https://www.instagram.com/wasjeauto_cr25/"
                 className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 group"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/wasjeauto_cr25/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 group"
               >
                 <Facebook className="w-6 h-6 group-hover:scale-110 transition-transform" />

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Flame } from "lucide-react";
-import backgroundVideo from "@/assets/background-video.mp4";
+import backgroundVideo from "@/assets/background-videov2.mp4";
 import { useEffect, useRef } from "react";
 
 import Navbar from "./Navbar";
@@ -21,7 +21,7 @@ const Hero = ({ onRegisterClick }: HeroProps) => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.50;
+      videoRef.current.playbackRate = 1.0;
     }
   }, []);
 
@@ -68,7 +68,7 @@ const Hero = ({ onRegisterClick }: HeroProps) => {
 
           {/* Subtitle */}
           <p className="text-xl md:text-3xl text-white/90 font-medium max-w-3xl mx-auto drop-shadow-lg leading-relaxed">
-            7 Landen. 2500 Kilometer. <span className="text-primary font-bold">Eén Legendarisch Avontuur.</span>
+            5 Landen. 2500 Kilometer. <span className="text-primary font-bold">Eén Legendarisch Avontuur.</span>
           </p>
 
           {/* CTAs */}

@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Flame, Map, Users } from "lucide-react";
+import { ChefHat, Map, Users } from "lucide-react";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 
 const About = () => {
@@ -12,10 +12,10 @@ const About = () => {
     {
       icon: Users,
       title: "VRIENDSCHAP",
-      description: "Samen rijden, samen feesten. Maak vrienden voor het leven.",
+      description: "Samen rijden, samen mooie avonturen beleven!",
     },
     {
-      icon: Flame,
+      icon: ChefHat,
       title: "GEHAKTBALLEN",
       description: "Aan het begin van de reis de beste gehaktballen van de grill.",
     },
