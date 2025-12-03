@@ -77,7 +77,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <button
                     onClick={() => scrollToSection("hero")}
-                    className="font-display text-2xl md:text-3xl font-bold text-white tracking-tighter hover:scale-105 transition-transform"
+                    className="font-display text-2xl md:text-3xl font-bold text-white tracking-normal hover:scale-105 transition-transform"
                 >
                     BALL & GRILL <span className="text-primary">RALLY</span>
                 </button>

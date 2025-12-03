@@ -33,7 +33,7 @@ const RouteSection = () => {
                                 <Map />
                             </div>
                             <div className="mt-8 p-8 bg-secondary text-white rounded-2xl shadow-lg">
-                                <h2 className="font-display text-2xl mb-4 text-primary">Hoogtepunten</h2>
+                                <h2 className="font-display text-2xl mb-4 tracking-wide text-primary">Hoogtepunten</h2>
                                 <ul className="space-y-3 text-white/80">
                                     <li className="flex items-center gap-3">
                                         <span className="w-2 h-2 bg-primary rounded-full" />
@@ -70,7 +70,7 @@ const RouteSection = () => {
                                     </div>
                                     <div>
                                         <span className="text-xs font-bold text-primary uppercase tracking-widest">{item.day}</span>
-                                        <h3 className="font-display text-2xl text-secondary mb-2">{item.title}</h3>
+                                        <h3 className="font-display text-2xl text-secondary mb-2 tracking-wide">{item.title}</h3>
                                         <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
                                     </div>
                                 </div>

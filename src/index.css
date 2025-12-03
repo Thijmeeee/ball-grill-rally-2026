@@ -93,6 +93,13 @@
     @apply border-border;
   }
 
+  /* Normalize root font size to avoid platform/browser text autoscaling */
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "kern" 1, "liga" 1;

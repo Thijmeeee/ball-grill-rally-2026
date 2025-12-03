@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
     <title>Ball & Grill Rally 2026</title>
     <meta name="description" content="Schrijf je in voor de Ball & Grill Rally 2026 - Een zevendaagse autorally vol avontuur, humor en gehaktballen." />
     <meta name="author" content="Ball & Grill Rally" />
@@ -19,6 +19,19 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ballgrill" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Set site-wide 80% zoom only on the production domain -->
+    <script>
+      (function() {
+        try {
+          var host = location.hostname.toLowerCase();
+          if (host === 'ballandgrillrally.com' || host === 'www.ballandgrillrally.com') {
+            document.documentElement.style.fontSize = '80%';
+          }
+        } catch (e) {
+          console.warn('Zoom script error', e);
+        }
+      })();
+    </script>
   </head>
 
   <body>

@@ -69,7 +69,7 @@ const PackingList = () => {
               INPAKLIJST
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Een goede voorbereiding is het halve werk. Zorg dat je deze essentials bij je hebt.
+              Een goede voorbereiding is het halve werk.
             </p>
           </div>
         </ScrollAnimation>
@@ -82,7 +82,7 @@ const PackingList = () => {
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:rotate-6 transition-all duration-300">
                     <category.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="font-display text-2xl text-secondary">{category.title}</h3>
+                  <h3 className="font-display text-2xl text-secondary tracking-wide">{category.title}</h3>
                 </div>
 
                 <ul className="space-y-3 text-left">
