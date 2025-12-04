@@ -94,7 +94,7 @@ const PackingList = () => {
         "Thema-outfit",
         "Muzieklijst",
         "Spelletjes",
-        "Duikbril en Snorkel"
+        "Duikbril en snorkel"
       ]
     }
   ];

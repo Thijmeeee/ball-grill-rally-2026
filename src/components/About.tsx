@@ -47,7 +47,7 @@ const About = () => {
                     <card.icon className="w-10 h-10 text-primary group-hover:text-white transition-colors" />
                   </div>
 
-                  <h3 className="font-display text-3xl text-secondary">
+                  <h3 className="font-display text-3xl text-secondary tracking-wide">
                     {card.title}
                   </h3>
 

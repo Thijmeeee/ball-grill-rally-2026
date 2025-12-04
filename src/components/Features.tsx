@@ -54,14 +54,14 @@ const Features = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {features.map((feature, index) => (
             <ScrollAnimation key={index} delay={index * 100} animation="zoom-in">
-              <Card className="h-full p-8 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all duration-300 group">
+              <Card className="h-full p-8 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all  duration-300 group">
                 <div className="flex flex-col items-start space-y-6">
                   <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:rotate-6 transition-all duration-300">
                     <feature.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
                   </div>
 
                   <div>
-                    <h3 className="font-display text-2xl text-white mb-3 tracking-wide group-hover:text-primary transition-colors">
+                    <h3 className="font-display text-2xl text-white mb-3 tracking-widest group-hover:text-primary transition-colors">
                       {feature.title}
                     </h3>
                     <p className="text-white/60 leading-relaxed">

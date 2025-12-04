@@ -23,7 +23,7 @@ const FAQ = () => {
         },
         {
             question: "Zit eten en drinken erbij in?",
-            answer: "Nee, maar natuurlijk zullen er wel voor gehaktballen zijn."
+            answer: "Nee, maar natuurlijk zullen er wel gehaktballen zijn."
         },
         {
             question: "Zitten de campings erbij in?",
