@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Flame } from "lucide-react";
-import backgroundVideo from "@/assets/background-videov2.mp4";
+import backgroundVideo from "@/assets/background-videov3.mp4";
 import { useEffect, useRef } from "react";
 
 import Navbar from "./Navbar";
