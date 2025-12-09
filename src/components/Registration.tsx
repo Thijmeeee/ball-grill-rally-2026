@@ -18,10 +18,10 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
   const handleCountdownFinish = () => setIsOpen(true);
 
   return (
-    <section id="register" className="py-24 bg-gradient-to-b from-secondary/20 to-secondary/30 relative overflow-hidden">
+    <section id="register" className="py-24 bg-secondary relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto">
-          <Card className="p-12 bg-card/80 backdrop-blur-sm border-2 border-primary/20 shadow-elevated">
+          <Card className="p-12 bg-white border-2 border-primary/20 shadow-elevated">
             <div className="text-center space-y-8">
               <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-6 py-2">
                 <Bell className="w-4 h-4 text-primary animate-pulse" />
@@ -37,7 +37,7 @@ const Registration = ({ onRegisterClick }: RegistrationProps) => {
                   <span className="text-primary font-bold" >HET AVONTUUR?</span>
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Inschrijvingen openen zaterdag 14 december om 20:00
+                  Inschrijvingen openen zondag 14 december om 20:00
                 </p>
               </div>
 

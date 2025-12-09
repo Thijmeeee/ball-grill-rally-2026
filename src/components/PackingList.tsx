@@ -14,7 +14,7 @@ const PackingList = () => {
         "Groene kaart (verzekering)",
         "Zorgverzekeringspas",
         "Reisverzekering gegevens",
-        "Vignetten (Oostenrijk, Slovenië, etc.)"
+        "Vignet (Zwitserland)"
       ]
     },
     {

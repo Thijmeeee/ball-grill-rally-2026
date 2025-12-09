@@ -13,7 +13,7 @@ const Navbar = () => {
             setIsScrolled(window.scrollY > 50);
 
             // Update active section based on scroll position
-            const sections = ["hero", "about", "timeline", "route", "features", "register", "faq"];
+            const sections = ["hero", "about", "timeline", "route", "features", "pricing", "register", "faq"];
             const current = sections.find(section => {
                 const element = document.getElementById(section);
                 if (element) {
@@ -43,6 +43,7 @@ const Navbar = () => {
             { id: "timeline", label: "Hoe Het Werkt" },
             { id: "route", label: "Route" },
             { id: "features", label: "Wat Je Krijgt" },
+            { id: "pricing", label: "Wat Het Kost" },
             { id: "register", label: "Inschrijven" },
             { id: "faq", label: "FAQ" },
         ];

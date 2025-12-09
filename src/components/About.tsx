@@ -23,6 +23,15 @@ const About = () => {
 
   return (
     <section id="about" className="py-24 md:py-32 bg-background relative overflow-hidden">
+      {/* Decorative Logo */}
+      <div className="absolute bottom-10 left-10 opacity-5 pointer-events-none hidden lg:block">
+        <img 
+          src="/logo-black-transparant.png" 
+          alt="" 
+          className="h-48 w-auto"
+        />
+      </div>
+      
       <div className="container mx-auto px-4 relative z-10">
         <ScrollAnimation animation="fade-in">
           <div className="text-center mb-16">

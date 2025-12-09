@@ -35,7 +35,7 @@ const FAQ = () => {
         },
         {
             question: "Wat kost de inschrijving?",
-            answer: "Onder de 300 euro per persoon maar exacte bedrag volgt nog. Bij inschrijving wordt wel 75 euro gevraagd als aanbetaling."
+            answer: "€275 per persoon. Bij inschrijving wordt wel 75 euro gevraagd als aanbetaling."
         },
         {
             question: "Krijg ik mijn aanbetaling terug als ik toch niet mee ga?",

@@ -5,6 +5,7 @@ import Timeline from "@/components/Timeline";
 import RouteSection from "@/components/RouteSection";
 import Features from "@/components/Features";
 import Registration from "@/components/Registration";
+import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import RegistrationForm from "@/components/RegistrationForm";
 import FAQ from "@/components/FAQ";
@@ -20,6 +21,7 @@ const Index = () => {
       <Timeline />
       <RouteSection />
       <Features />
+      <Pricing />
       <Registration onRegisterClick={() => setShowRegistrationForm(true)} />
       <PackingList />
       <FAQ />
