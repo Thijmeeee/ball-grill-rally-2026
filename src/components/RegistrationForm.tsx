@@ -30,7 +30,7 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
-  
+
   const [teamData, setTeamData] = useState({
     teamName: "",
     teamNumber: "",
@@ -128,19 +128,28 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
         console.error('Error details:', JSON.stringify(dbError, null, 2));
       }
 
-      // Send email to first person (contact person)
-      const contactPerson = persons[0];
-      await emailjs.send(
-        'service_vdr96lk',
-        'template_892xnai',
-        {
-          to_name: `${contactPerson.firstName} ${contactPerson.lastName}`,
-          to_email: contactPerson.email,
-          team_name: teamData.teamName,
-          message: "Je bent ingeschreven! We nemen snel contact op."
-        },
-        '3A-KlFMiw_IP0Ejw1'
-      );
+
+      // Send email to ALL team members
+      const emailPromises = persons.map((person, index) => {
+        return emailjs.send(
+          'service_vdr96lk',
+          'template_892xnai',
+          {
+            to_name: `${person.firstName} ${person.lastName}`,
+            to_email: person.email,
+            team_name: teamData.teamName,
+            team_number: teamData.teamNumber,
+            message: index === 0
+              ? "Je bent ingeschreven als contactpersoon! We nemen snel contact op."
+              : "Je bent ingeschreven! We nemen snel contact op."
+          },
+          '3A-KlFMiw_IP0Ejw1'
+        );
+      });
+
+      // Wait for all emails to be sent
+      await Promise.all(emailPromises);
+
 
       toast({
         title: "Inschrijving ontvangen! 🔥",
@@ -208,7 +217,7 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
   };
 
   const isPersonsTabValid = () => {
-    return persons.every(p => 
+    return persons.every(p =>
       p.firstName && p.lastName && p.email && p.phone && p.street && p.houseNumber && p.postalCode && p.city && p.tshirtSize
     );
   };
@@ -250,11 +259,10 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
           {tabs.map((tab, index) => (
             <div
               key={index}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-semibold transition-all ${
-                currentTab === index
+              className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-semibold transition-all ${currentTab === index
                   ? "bg-primary text-primary-foreground"
                   : "bg-muted text-muted-foreground"
-              }`}
+                }`}
               aria-hidden
             >
               <tab.icon className="w-4 h-4" />
@@ -324,7 +332,7 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
                   <Car className="w-4 h-4 text-primary" />
                   <Label className="text-base font-semibold">Auto gegevens</Label>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="carBrand">Merk *</Label>
@@ -528,7 +536,7 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
                 Vorige
               </Button>
             )}
-            
+
             {currentTab === 0 && (
               <Button
                 type="button"
