@@ -30,6 +30,8 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
+  const [teamNameError, setTeamNameError] = useState("");
+  const [teamNumberError, setTeamNumberError] = useState("");
 
   const [teamData, setTeamData] = useState({
     teamName: "",
@@ -93,11 +95,58 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
     }
   }, [teamData.teamSize]);
 
+  const checkDuplicates = async () => {
+    let hasError = false;
+
+    // Check for duplicate team name (case-insensitive)
+    const { data: existingTeamName } = await supabase
+      .from('registrations')
+      .select('team_name')
+      .ilike('team_name', teamData.teamName)
+      .limit(1);
+
+    if (existingTeamName && existingTeamName.length > 0) {
+      setTeamNameError("Deze teamnaam is al in gebruik. Kies een andere naam.");
+      hasError = true;
+    } else {
+      setTeamNameError("");
+    }
+
+    // Check for duplicate team number
+    const { data: existingTeamNumber } = await supabase
+      .from('registrations')
+      .select('team_number')
+      .eq('team_number', teamData.teamNumber)
+      .limit(1);
+
+    if (existingTeamNumber && existingTeamNumber.length > 0) {
+      setTeamNumberError("Dit teamnummer is al in gebruik. Kies een ander nummer.");
+      hasError = true;
+    } else {
+      setTeamNumberError("");
+    }
+
+    return !hasError;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
+      // Check for duplicates first
+      const isValid = await checkDuplicates();
+      if (!isValid) {
+        setIsSubmitting(false);
+        toast({
+          title: "Validatiefout",
+          description: "Er zijn problemen met je invoer. Check de foutmeldingen.",
+          variant: "destructive"
+        });
+        // Scroll back to team tab to show errors
+        setCurrentTab(0);
+        return;
+      }
       // 1. Save to Supabase
       const dbData = {
         team_name: teamData.teamName,
@@ -177,6 +226,14 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
 
   const handleTeamChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    // Clear errors when user edits the fields
+    if (name === "teamName" && teamNameError) {
+      setTeamNameError("");
+    }
+    if (name === "teamNumber" && teamNumberError) {
+      setTeamNumberError("");
+    }
 
     // If editing teamNumber, allow digits only and limit to 2 characters
     if (name === "teamNumber") {
@@ -260,8 +317,8 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
             <div
               key={index}
               className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-semibold transition-all ${currentTab === index
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground"
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground"
                 }`}
               aria-hidden
             >
@@ -291,8 +348,13 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
                     placeholder="De Gehaktbal Helden"
                     value={teamData.teamName}
                     onChange={handleTeamChange}
-                    className="bg-background"
+                    className={`bg-background ${teamNameError ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                   />
+                  {teamNameError && (
+                    <p className="text-sm text-red-500 flex items-center gap-1 mt-1">
+                      <span className="text-red-500">⚠</span> {teamNameError}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -304,11 +366,16 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
                     placeholder="42"
                     value={teamData.teamNumber}
                     onChange={handleTeamChange}
-                    className="bg-background"
+                    className={`bg-background ${teamNumberError ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                     maxLength={2}
                     inputMode="numeric"
                     pattern="[0-9]*"
                   />
+                  {teamNumberError && (
+                    <p className="text-sm text-red-500 flex items-center gap-1 mt-1">
+                      <span className="text-red-500">⚠</span> {teamNumberError}
+                    </p>
+                  )}
                 </div>
               </div>
 

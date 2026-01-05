@@ -114,54 +114,63 @@ const RouteSection = () => {
 
                     {/* Itinerary Section */}
                     <div className="order-1 lg:order-2 space-y-4">
-                        {itinerary.map((item, index) => (
-                            <ScrollAnimation key={index} delay={index * 50} animation="slide-right">
-                                <div 
-                                    className="bg-card rounded-xl shadow-sm border border-border hover:border-primary/30 hover:shadow-md transition-all group cursor-pointer overflow-hidden"
-                                    onClick={() => toggleDay(index)}
-                                >
-                                    <div className="flex gap-6 p-6">
-                                        <div className="flex-shrink-0 w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                                            <item.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                                        </div>
-                                        <div className="flex-1">
-                                            <span className="text-xs font-bold text-primary uppercase tracking-widest">{item.day}</span>
-                                            <h3 className="font-display text-2xl text-secondary mb-1 tracking-wide">{item.title}</h3>
-                                            <p className="text-muted-foreground font-medium">
-                                                {item.km > 0 ? `${item.km} KM` : "FINISH"}
-                                            </p>
-                                            <p className="text-muted-foreground text-sm mt-2 line-clamp-2">
-                                                {renderRichInline(item.desc)}
-                                            </p>
-                                        </div>
-                                        <div className="flex items-center">
-                                            <ChevronDown 
-                                                className={`w-6 h-6 text-muted-foreground transition-transform duration-300 ${
-                                                    expandedDay === index ? 'rotate-180' : ''
-                                                }`} 
-                                            />
-                                        </div>
-                                    </div>
+                        {itinerary.map((item, index) => {
+                            const paragraphs = item.desc.split(/\n\s*\n/);
+                            const firstPara = paragraphs[0];
+                            const remainingParas = paragraphs.slice(1);
+                            const isExpanded = expandedDay === index;
+
+                            return (
+                                <ScrollAnimation key={index} delay={index * 50} animation="slide-right">
                                     <div 
-                                        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                                            expandedDay === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                                        }`}
+                                        className="bg-card rounded-xl shadow-sm border border-border hover:border-primary/30 hover:shadow-md transition-all group cursor-pointer overflow-hidden"
+                                        onClick={() => toggleDay(index)}
                                     >
-                                        <div className="px-6 pb-6 pt-0 ml-20">
-                                            <div className="border-t border-border pt-4">
-                                                <div className="text-muted-foreground leading-relaxed max-h-72 overflow-auto pr-2">
-                                                    {item.desc.split(/\n\s*\n/).map((para, i) => (
-                                                        <p className="mb-4 text-sm" key={i}>
-                                                            {renderRichInline(para)}
-                                                        </p>
-                                                    ))}
-                                                </div>
+                                        <div className="flex gap-6 p-6">
+                                            <div className="flex-shrink-0 w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                                <item.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                                            </div>
+                                            <div className="flex-1">
+                                                <span className="text-xs font-bold text-primary uppercase tracking-widest">{item.day}</span>
+                                                <h3 className="font-display text-2xl text-secondary mb-1 tracking-wide">{item.title}</h3>
+                                                <p className="text-muted-foreground font-medium">
+                                                    {item.km > 0 ? `${item.km} KM` : "FINISH"}
+                                                </p>
+                                                <p className={`text-muted-foreground text-sm mt-2 ${isExpanded ? '' : 'line-clamp-2'}`}>
+                                                    {renderRichInline(firstPara)}
+                                                </p>
+                                            </div>
+                                            <div className="flex items-center">
+                                                <ChevronDown 
+                                                    className={`w-6 h-6 text-muted-foreground transition-transform duration-300 ${
+                                                        isExpanded ? 'rotate-180' : ''
+                                                    }`} 
+                                                />
                                             </div>
                                         </div>
+                                        <div 
+                                            className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                                                isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                                            }`}
+                                        >
+                                            {remainingParas.length > 0 && (
+                                                <div className="px-6 pb-6 pt-0 ml-20">
+                                                    <div className="border-t border-border pt-4">
+                                                        <div className="text-muted-foreground leading-relaxed max-h-72 overflow-auto pr-2">
+                                                            {remainingParas.map((para, i) => (
+                                                                <p className="mb-4 text-sm" key={i}>
+                                                                    {renderRichInline(para)}
+                                                                </p>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            </ScrollAnimation>
-                        ))}
+                                </ScrollAnimation>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
