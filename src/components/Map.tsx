@@ -19,8 +19,7 @@ const locations = [
     { name: "Dag 2: SEFFERWEICH", coords: [50.093, 6.552] as [number, number] },
     { name: "Dag 3: WALDSHUT-TIENGEN", coords: [47.610, 8.230] as [number, number] },
     { name: "Dag 4: BINN", coords: [46.369, 8.203] as [number, number] },
-    { name: "Dag 5: SABERTRAND", coords: [45.060, 6.867] as [number, number] },
-    { name: "Dag 6: DEMI-QUARTIER", coords: [45.88, 6.639] as [number, number] },
+    { name: "Dag 5 & 6: DEMI-QUARTIER", coords: [45.88, 6.639] as [number, number] },
     { name: "Dag 7: SAINT-MAURICE-SUR-MOSELLE", coords: [47.855, 6.811] as [number, number] },
     { name: "Dag 7: Alblasserdam", coords: [51.8642, 4.6597]  as [number, number] },
 ];
